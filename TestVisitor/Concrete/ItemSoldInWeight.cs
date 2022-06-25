@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestVisitor.Base;
 
-namespace TestVisitor
+namespace TestVisitor.Concrete
 {
-    public class ItemSoldInPieces : Item, IVisitable
+    public class ItemSoldInWeight : Item, IVisitable
     {
         public double UnitPrice { get; set; }
-        public int NumberOfPieces { get; set; }
+        public double Weight { get; set; }
 
-        public ItemSoldInPieces(string code, string descriprion)
+        public ItemSoldInWeight(string code, string description)
         {
-            this.Code = code;
-            this.Description = descriprion;
+            Code = code;
+            Description = description;
         }
 
         public double Accept(IVisitor visitor)
         {
             return visitor.Visit(this);
         }
-
-
     }
 }
