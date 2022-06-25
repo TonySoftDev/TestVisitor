@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestVisitor.Base;
 
 namespace TestVisitor.Concrete
 {
-    public class ShoppingVisitor : IVisitor
+    public class ShoppingVisitor : IVisitor<Item>
     {
-        public double Visit(ItemSoldInWeight item)
+        public double Visit(Item item)
         {
-            return item.Weight * item.UnitPrice;
-        }
+            double ret = 0.0;
 
-        public double Visit(ItemSoldInPieces item)
-        {
-            return item.NumberOfPieces * item.UnitPrice;
+            if(item.GetType() == typeof(ItemSoldInWeight))
+            {
+                ret = ((ItemSoldInWeight)item).Weight * ((ItemSoldInWeight)item).UnitPrice;
+            }
+
+            if (item.GetType() == typeof(ItemSoldInPieces))
+            {
+                ret = ((ItemSoldInPieces)item).NumberOfPieces * ((ItemSoldInPieces)item).UnitPrice;
+            }
+
+            return ret;
         }
     }
 }

@@ -7,7 +7,7 @@ using TestVisitor.Base;
 
 namespace TestVisitor.Concrete
 {
-    public class ItemSoldInPieces : Item, IVisitable
+    public class ItemSoldInPieces : Item, IVisitable<Item>
     {
         public double UnitPrice { get; set; }
         public int NumberOfPieces { get; set; }
@@ -18,11 +18,9 @@ namespace TestVisitor.Concrete
             Description = descriprion;
         }
 
-        public double Accept(IVisitor visitor)
+        public double Accept(IVisitor<Item> visitor)
         {
             return visitor.Visit(this);
         }
-
-
     }
 }

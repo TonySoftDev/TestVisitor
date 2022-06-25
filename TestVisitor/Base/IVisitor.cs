@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TestVisitor.Base
 {
-    public interface IVisitable<T> where T : class
+    public interface IVisitor<T> where T : class
     {
-        double Accept(IVisitor<T> visitor);
+        double Visit(T item);
     }
+
 }

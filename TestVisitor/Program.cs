@@ -6,11 +6,12 @@ Console.OutputEncoding = System.Text.Encoding.UTF8; //Serve per la codifica dell
 
 Console.WriteLine("Inizio calcolo");
 
-List<IVisitable> itemsList = new List<IVisitable>
+
+List<IVisitable<Item>> itemsList = new List<IVisitable<Item>>
 {
-    new ItemSoldInPieces("C010", "Penna") { NumberOfPieces = 10, UnitPrice=0.20 },
-    new ItemSoldInPieces("C011", "Quaderno") { NumberOfPieces = 5, UnitPrice=1.10 },
-    new ItemSoldInWeight("A100", "Mele") { Weight=500, UnitPrice=0.01 },
+    new ItemSoldInPieces("C010", "Penna") { NumberOfPieces = 2, UnitPrice=0.50 },
+    new ItemSoldInPieces("C011", "Quadernone") { NumberOfPieces = 5, UnitPrice=1.50 },
+    new ItemSoldInWeight("A100", "Mele") { Weight=1000, UnitPrice=0.01 },
     new ItemSoldInWeight("A101", "Ananas") { Weight=1000, UnitPrice=0.02 }
 };
 
@@ -20,7 +21,7 @@ Console.WriteLine($"Totale prodotti: € {totale}");
 
 
 // Metodo di supporto per il calcolo
-double CalcolaTotale(List<IVisitable> items)
+double CalcolaTotale(List<IVisitable<Item>> items)
 {
     double dRet = 0.0;
     ShoppingVisitor visitor = new ShoppingVisitor();
